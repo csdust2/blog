@@ -13,7 +13,8 @@ pe 物理块 （physical extent）：物理卷（pv）中可分配的最小存�
 le 逻辑块 （logical extent）：逻辑卷中用于分配的最小存储单元，逻辑块的大小取决于逻辑卷所在卷组中的物理块大小。
 架构可以参考如下图
 
-{% mermaid graph BT %}
+```mermaid
+graph BT
 subgraph PV1
 物理块1 --> 物理卷1;
 物理块2 --> 物理卷1;
@@ -35,7 +36,8 @@ end
 id1[(卷组)] --> 逻辑卷1;
 id1[(卷组)] --> 逻辑卷2;
 id1[(卷组)] --> 逻辑卷N;
-{% endmermaid %}
+```
+
 lvm卷的创建可以使用整个硬盘也可以使用分区，使用整个硬盘直接使用 pvcreate 命令即可，使用分区需使用 parted 先分好区。推荐使用分区，因为直接使用整个硬盘，一些磁盘工具会识别不了，当其他人维护时可能出错。比如：使用整盘以及分区时 fdisk 的显示如下
 ```
 [root@localhost ~]# fdisk -l /dev/sdb
